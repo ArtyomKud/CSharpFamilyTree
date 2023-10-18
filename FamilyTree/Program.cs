@@ -6,10 +6,15 @@ internal class Program
     {
         Tree tree = new Tree();
         Human human1 = new Human("Иван", "Федоров", "мужской", 89);
+        human1.AddWife("Тамара", "Смирнова", "женский", 78);
         human1.AddChildren("Денис", "Абрамов", "мужской", 50);
+        human1.GetChildren(0).AddWife("Екатерина", "Игнатьева", "женский", 45);
         human1.AddChildren("Егор", "Лукьянов", "мужской", 45);
+        human1.GetChildren(1).AddWife("Татьяна", "Ершова", "женский", 40);
         human1.GetChildren(0).AddChildren("Влад", "Абрамов", "мужской", 20);
         human1.GetChildren(1).AddChildren("Станислав", "Лукьянов", "мужской", 21);
+
+
 
       
 

@@ -24,6 +24,8 @@ namespace FamilyTree
         private List<Human> children;
         private Human mother = null;
         private Human father = null;
+        private Human wife = null;
+        private Human husband = null;
 
 
 
@@ -122,7 +124,23 @@ namespace FamilyTree
             }
         }
 
-        
+        public void AddWife(string name, string surname, string gender, int age)
+        {
+
+            this.wife = new Human(name, surname, gender, age);
+            this.wife.husband = this;
+
+
+        }
+
+        public void AddHusband(string name, string surname, string gender, int age)
+        {
+
+            this.husband = new Human(name, surname, gender, age);
+            this.husband.wife = this;
+        }
+
+
         public override string ToString()
         {
             return $"Имя {name}, Фамилия {surname}, Возраст {age}";
@@ -135,9 +153,20 @@ namespace FamilyTree
             Console.WriteLine($"{new String('-', indent)}" +
                 $"Имя {this.name} " +
                 $"Фамилия {this.surname} " +
-                $"Возраст {this.age}\n| " +
-                $"{new String('-', indent+1)}Мать {this.mother?.ToString()}\n| " +
-                $"{new String('-', indent+1)}Отец {this.father?.ToString()}");
+                $"Возраст {this.age}");
+
+            if (gender.Equals("мужской"))
+            {
+                Console.WriteLine($"{new String('-', indent + 1)}Жена {this.wife?.ToString()}");
+
+            }
+
+            if (gender.Equals("женский"))
+            {
+                Console.WriteLine($"{new String('-', indent + 1)}Муж {this.husband?.ToString()}");
+
+            }
+
             if (this.children.Count > 0)
             {
                 foreach (var child in children)
